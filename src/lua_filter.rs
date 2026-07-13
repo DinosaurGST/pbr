@@ -54,7 +54,7 @@ impl<'a> LuaReadFilter<'a> {
                 };
                 this.borrow_scoped::<Record, i32>(|r| match qpos {
                     usize::MAX => -1,
-                    _ => r.qual()[qpos] as i32,
+                    _ => r.qual().get(qpos).copied().map(i32::from).unwrap_or(-1),
                 })
             });
             reg.add_field_function_get("distance_from_5prime", |_, this| {
