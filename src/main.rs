@@ -112,7 +112,7 @@ fn main() -> Result<()> {
         None,               // optional bcf/vcf file to specify positions of interest
         true,               // Merge any overlapping regions in the BED file
         Some(opts.threads), // optional allowed number of threads, defaults to max
-        None,               // optional chunksize modification
+        Some(10_000),       // optional chunksize modification
         None,               // optional modifier on the size of the channel for sending Positions
         basic_processor,
     );
